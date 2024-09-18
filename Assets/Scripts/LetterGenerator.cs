@@ -4,39 +4,38 @@ using UnityEngine;
 
 public class LetterGenerator : MonoBehaviour
 {
-	List<string> firstNames = new List<string>{ "John", "Jenny", "Barbara", "Tom", "Daphne",
-																						  "Jimmy", "Sarah", "Brad", "Dale", "Jeff", "Anna", "Lily",
-																							"Mieke", "Hannah", "Laurence", "Oliver", "Sofia", "Louis",
-																							"Muhammad", "Steffan", "Harry", "Rebecca", "Sebastian", "Simone",
-																							"Mike", "Angelina", "Marcus", "Alan", "Richard", "Helen", "Daniel",
-																							"Fern", "Joaquin", "Lorna"};
+	List<string> firstNames = new List<string>{ "João", "Jéssica", "Bárbara", "Tomás", "Dafne",
+											"Jaime", "Sara", "Bruno", "Davi", "Jefferson", "Ana", "Lídia",
+											"Micaela", "Ana", "Lourenço", "Olavo", "Sofia", "Luiz",
+											"Moisés", "Estêvão", "Henrique", "Rebeca", "Sebastião", "Simone",
+											"Miguel", "Angélica", "Marcos", "Allan", "Ricardo", "Helena", "Daniel",
+											"Fernanda", "Joaquim", "Lorena" };
 
-	List<string> surnames = new List<string>{ "Peterson", "Bacon", "Liebermann", "Brown", "Woodson", "Rodriguez", "Jones",
-																						"Wilson", "Aarons", "Brocklehurst", "Broadbent", "Potter", "Cooper", "Carr",
-																						"Daniels", "Williams", "Schultz", "Santos", "Monroe", "Watson", "Neals", "MacDonald",
-																						"Cain", "Archer", "Richards", "Bishop", "Butcher", "Stark", "Mueller", "Fischer", "Schneider",
-																						"Wainwright", "Baker", "Smith", "Bauer", "Jaeger", "Ziegler" };
+	List<string> surnames = new List<string>{ "Pereira", "Silva", "Lima", "Moraes", "Sousa", "Rodrigues", "Oliveira",
+											"Martins", "Almeida", "Barbosa", "Gomes", "Santos", "Coelho", "Carvalho",
+											"Souza", "Costa", "Schmidt", "Santos", "Muniz", "Fernandes", "Nascimento", "Maciel",
+											"Camargo", "Araújo", "Ribeiro", "Batista", "Barros", "Teixeira", "Müller", "Fischer", "Schneider",
+											"Carvalho", "Macedo", "Ferreira", "Borges", "Jaeger", "Ziegler" };
 
-	List<string> streetLastWords = new List<string> { "Street", "Road", "Street", "Road", "Street", "Road", "Street", "Road",
-																										"Lane", "Avenue", "Boulevard", "Alley", "Close", "Way", "Court", "Crescent",
-																										"Mews", "Drive", "Hill", "Lane", "Row", "Square", "Grove"};
 
-	List<string> streetFirstWords = new List<string> { "High", "Church", "Park", "Main", "Station", "Green", "Manor", "Queens", "New", "Grange",
-																										"Kings", "Highfield", "Mill", "Alexander", "Springfield", "Victoria", "George", "West", "North", "East",
-																										"South", "The", "Stanley", "School", "Blue Jay", "Crow", "Orion", "Aquarius", "Apollo", "Birch", "Oak",
-																										"Ash", "Yew", "Dove", "Pigeon", "Peacock", "Partridge", "Nightingale", "Mallard", "Magpie", "Falcon",
-																										"Montague", "Ophelia", "Yorick", "Titania", "Puck", "Hamlet", "Picasso", "Raphael", "Leonardo", "Van Gogh",
-																										"Fortran", "Pascal", "Cobol"};
+	List<string> streetLastWords = new List<string> { "Dor de cabeça", "Febre", "Tosse", "Fadiga", "Dor muscular", "Calafrios", "Dificuldade para respirar", "Dor no peito", 
+												  "Náusea", "Vômito", "Diarreia", "Perda de apetite", "Erupção cutânea", "Cansaço excessivo", "Suores noturnos", "Congestão nasal", 
+												  "Dor abdominal", "Dores nas articulações", "Tontura", "Perda de olfato", "Confusão mental", "Olhos vermelhos", "Falta de ar", "Dor de garganta" };
 
-	List<string> cities = new List<string> { "Manchester", "London", "Liverpool", "Birmingham", "Edinburgh", "Glasgow", "Coventry", "Chester", "York", "Bristol",
-																					 "Oxford", "Aberdeen", "Bangor", "Aberystwyth", "Cardiff", "Chichester", "Dundee", "Dunfermline", "Inverness", "Hull", "St. Andrews",
-																					 "Milton Keynes", "Newcastle", "Perth", "Sheffield", "Slough", "Truro", "Penistone", "Swindon", "Bath", "Ipswitch",
-																						"Southend-on-Sea", "Stratford-upon-Avon",
-																					 "Westward Ho!", "Plwmp", "Upton Snodsbury", "Blubberhouses", "Dull", "Braintree", "Barton in the Beans"};
 
-	List<string> fakeCities = new List<string> { "Norington", "Marslea", "Durrich", "Langington", "Wretched Bottom", "Soulminster", "Thallborough", "Bursley", "Sheadmond Upon Ntehetmere",
-																								"Wrighton", "St. Rynes", "North Keynes", "St. Looes", "Locktrout", "Sit", "Dandus", "Hestherholme",
-																								"Percoeba-on-Sea", "Maifield", "Shoremill-upon-Thames"};
+	List<string> streetFirstWords = new List<string> { "Enxaqueca e :", "Gripe e :", "Bronquite e :", "Anemia e :", "Fibromialgia e :", "Malária e :", "Asma e :", "Angina e :", 
+												  "Gastrite e :", "Vômito agudo e :", "Gastroenterite e :", "Hepatite e :", "Dermatite e :", "Síndrome da fadiga crônica e :", "Tuberculose e :", 
+												  "Sinusite e :", "Apendicite e :", "Artrite e :", "Vertigem e :", "COVID-19 e :", "Demência e :", "Conjuntivite e :", "Doença pulmonar obstrutiva crônica (DPOC) e :", "Faringite" };
+
+	List<string> cities  = new List<string> { "Unimed", "Bradesco Saúde", "Amil", "SulAmérica", "Porto Seguro Saúde", "Hapvida", "NotreDame Intermédica", "Prevent Senior", 
+											  "Allianz Saúde", "Benevix", "Golden Cross", "São Francisco Saúde", "Bio Saúde", "GreenLine", "Clinipam", "Vitallis", "Samp", 
+											  "Mediservice", "Promed", "Trasmontano", "Notredame", "One Health", "Central Nacional Unimed", "NotreDame Seguros", 
+											  "Sompo Saúde", "QSaúde", "Seguros Unimed", "Itálica Saúde", "Assim Saúde", "Care Plus", "GNDI", "E-Pharma Saúde", 
+											  "Grupo NotreDame", "Plena Saúde", "Plena Clin", "Omint", "Santa Helena Saúde", "Vivest", "Marítima Saúde" };
+
+	List<string> fakeCities = new List<string> { "Individual", "Familiar", "Empresarial", "Coletivo por Adesão", "Ambulatorial", "Hospitalar", "Hospitalar com Obstetrícia", "Odontológico", 
+											   "Referência", "Internacional", "Executivo", "Pré-pagamento", "Coparticipação", "Sem Coparticipação", "Premium", "Essencial", 
+											   "Flex", "Master", "Pleno", "Básico" };
 
 
 	int difficulty = 0;
@@ -78,8 +77,8 @@ public class LetterGenerator : MonoBehaviour
 
 			//if (evilLetter == 1)
 			//{
-				//letter = MakeEvilLetter();
-				//return;
+			//letter = MakeEvilLetter();
+			//return;
 			//}
 
 			switch (value)
@@ -88,21 +87,21 @@ public class LetterGenerator : MonoBehaviour
 					//no stamp
 					type = EDeliveryType.Missing;
 					break;
-				case baseFakeValue+1:
+				case baseFakeValue + 1:
 					type = Random.Range(0f, 1f) >= .5f ? EDeliveryType.FakeFirstClass : EDeliveryType.FakeSecondClass;
 					//todo
 					break;
-				case baseFakeValue+2:
+				case baseFakeValue + 2:
 					//wrong name
 					{
 						int roll = Random.Range(0, 2);
-						if(roll == 0)
+						if (roll == 0)
 							firstName = "";
 						else
 							surname = "";
 						break;
 					}
-				case baseFakeValue+3:
+				case baseFakeValue + 3:
 					//wrong address
 					{
 						int roll = Random.Range(0, 3);
@@ -114,7 +113,7 @@ public class LetterGenerator : MonoBehaviour
 							streetLastWord = "";
 						break;
 					}
-				case baseFakeValue+4:
+				case baseFakeValue + 4:
 					//fake city
 					city = PickRandomFromList(fakeCities);
 					break;
@@ -124,7 +123,7 @@ public class LetterGenerator : MonoBehaviour
 
 		string address = firstName + surname + "\n" + houseNumber + streetFirstWord + streetLastWord + "\n" + city;
 		letterComponent.Initialise(address, isLetterValid, type, z);
-		z+= .2f;
+		z += .2f;
 		if (z > 8.5)
 			z = 0;
 	}
