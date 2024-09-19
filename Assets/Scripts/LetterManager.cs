@@ -125,7 +125,7 @@ public class LetterManager : MonoBehaviour
 				Debug.Log("end");
 				endScreen.SetActive(true);
 				GetComponent<SoundManager>().StopClock();
-				finalScoreText.text = "Final Severace: $" + scorePounds.ToString() + "." + (scorePennies < 10 ? "0" : "") + scorePennies.ToString();
+				finalScoreText.text = "Sald final: R$" + scorePounds.ToString() + "." + (scorePennies < 10 ? "0" : "") + scorePennies.ToString();
 			}
 		}
 	}
@@ -204,48 +204,51 @@ public class LetterManager : MonoBehaviour
 	}
 
 	void SetScore(int delta)
-	{
-		GetComponent<SoundManager>().PlaySound(ESound.Correct);
+{
+    GetComponent<SoundManager>().PlaySound(ESound.Correct);
 
-		scorePennies += delta;
-		if (scorePennies >= 100)
-		{
-			scorePounds++;
-			scorePennies -= 100;
-		}
-		scoreText.text = "Earned: $" + scorePounds.ToString() + "." + (scorePennies < 10 ? "0" : "") + scorePennies.ToString();
+    // Altere o incremento de score para multiplicar por 10
+    scorePennies += delta; // Cada unidade agora vale 10
+    if (scorePennies >= 100)
+    {
+        scorePounds += scorePennies / 100;
+        scorePennies %= 100;
+    }
+    scoreText.text = "Ganhos: R$" + scorePounds.ToString() + "." + (scorePennies < 10 ? "0" : "") + scorePennies.ToString();
 
-		if (scorePennies >= 12 && !spawnedFakeStampNote)
-		{
-			GetComponent<SoundManager>().PlaySound(ESound.New);
-			spawnedFakeStampNote = true;
-			GameObject note = (GameObject)Instantiate(Resources.Load("NoteFakeStamp"));
-			note.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-2.5f, 2.5f), -9.1f);
-			generator.SetDifficulty(1);
-			initialSpawnCountdown = true;
-			letterSpawnCountdown = 10f;
-		}
-		if (scorePennies >= 30 && !spawnedWrongAddressNote)
-		{
-			GetComponent<SoundManager>().PlaySound(ESound.New);
-			spawnedWrongAddressNote = true;
-			GameObject note = (GameObject)Instantiate(Resources.Load("NoteWrongAddress"));
-			note.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-2.5f, 2.5f), -9.2f);
-			generator.SetDifficulty(3);
-			initialSpawnCountdown = true;
-			letterSpawnCountdown = 10f;
-		}
-		if (scorePennies >= 55 && !spawnedWrongCityNote)
-		{
-			GetComponent<SoundManager>().PlaySound(ESound.New);
-			spawnedWrongCityNote = true;
-			GameObject note = (GameObject)Instantiate(Resources.Load("NoteWrongCity"));
-			note.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-2.5f, 2.5f), -9.3f);
-			generator.SetDifficulty(4);
-			initialSpawnCountdown = true;
-			letterSpawnCountdown = 10f;
-		}
-	}
+    // Lógica para spawn de notas permanece a mesma
+    if (scorePennies >= 120 && !spawnedFakeStampNote)
+    {
+        GetComponent<SoundManager>().PlaySound(ESound.New);
+        spawnedFakeStampNote = true;
+        GameObject note = (GameObject)Instantiate(Resources.Load("NoteFakeStamp"));
+        note.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-2.5f, 2.5f), -9.1f);
+        generator.SetDifficulty(1);
+        initialSpawnCountdown = true;
+        letterSpawnCountdown = 10f;
+    }
+    if (scorePennies >= 300 && !spawnedWrongAddressNote)
+    {
+        GetComponent<SoundManager>().PlaySound(ESound.New);
+        spawnedWrongAddressNote = true;
+        GameObject note = (GameObject)Instantiate(Resources.Load("NoteWrongAddress"));
+        note.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-2.5f, 2.5f), -9.2f);
+        generator.SetDifficulty(3);
+        initialSpawnCountdown = true;
+        letterSpawnCountdown = 10f;
+    }
+    if (scorePennies >= 550 && !spawnedWrongCityNote)
+    {
+        GetComponent<SoundManager>().PlaySound(ESound.New);
+        spawnedWrongCityNote = true;
+        GameObject note = (GameObject)Instantiate(Resources.Load("NoteWrongCity"));
+        note.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-2.5f, 2.5f), -9.3f);
+        generator.SetDifficulty(4);
+        initialSpawnCountdown = true;
+        letterSpawnCountdown = 10f;
+    }
+}
+
 
 	void AddLetter()
 	{
@@ -299,7 +302,7 @@ public class LetterManager : MonoBehaviour
 		cross5.SetActive(false);
 		scorePennies = 0;
 		scorePounds = 0;
-		scoreText.text = "Earned: $" + scorePounds.ToString() + "." + (scorePennies < 10 ? "0" : "") + scorePennies.ToString();
+		scoreText.text = "Ganhos: R$" + scorePounds.ToString() + "." + (scorePennies < 10 ? "0" : "") + scorePennies.ToString();
 		spawnedFakeStampNote = false;
 		spawnedWrongAddressNote = false;
 		spawnedWrongCityNote = false;
